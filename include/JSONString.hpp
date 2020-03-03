@@ -8,16 +8,16 @@
 
 namespace json {
 
-class JSONString : public _JSONValue {
+class _JSONString : public _JSONValue, public std::enable_shared_from_this<_JSONString> {
 private:
     std::string value;
 
 public:
-    JSONString() : value("") { }
-    JSONString(char *c) : value(c) { }
-    JSONString(std::string s) : value(s) { }
+    _JSONString() : value("") { }
+    _JSONString(char *c) : value(c) { }
+    _JSONString(std::string s) : value(s) { }
 
-    virtual ~JSONString() { }
+    virtual ~_JSONString() { }
 
     virtual std::string to_string() const override {
         return value;
@@ -26,7 +26,17 @@ public:
     virtual std::string type() const override {
         return "string";
     }
+
+    virtual std::shared_ptr<_JSONValue> operator+(const std::shared_ptr<_JSONValue> &b) override {
+        return this->shared_from_this();
+    }
 };
+
+using JSONString = std::shared_ptr<_JSONString>;
+
+static inline JSONString json_string(std::string a) {
+    return std::make_shared<_JSONString>(a);
+}
 
 }
 
