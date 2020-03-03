@@ -4,6 +4,8 @@
 #include <memory>
 #include <string>
 
+namespace json {
+
 class _JSONValue {
 public:
     _JSONValue() = default;
@@ -19,5 +21,7 @@ using JSONValue = std::shared_ptr<_JSONValue>;
 inline JSONValue operator+(JSONValue& a, JSONValue& b) {
     return *a + b;
 }
+
+} // namespace json
 
 #endif /* __HPP_JSONVALUE__ */

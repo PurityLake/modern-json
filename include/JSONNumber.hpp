@@ -7,6 +7,8 @@
 
 #include "JSONValue.hpp"
 
+namespace json {
+
 template <typename Number, typename std::enable_if<std::is_arithmetic<Number>::value>::type* = nullptr>
 class _JSONNumber : public _JSONValue, public std::enable_shared_from_this<_JSONNumber<Number>> {
 private:
@@ -41,5 +43,7 @@ template <typename Number, typename std::enable_if<std::is_arithmetic<Number>::v
 static inline JSONNumber<Number> json_number(Number a) {
     return std::make_shared<_JSONNumber<Number>>(a);
 }
+
+} // namespace json
 
 #endif /* __HPP_JSONNUMBER__ */

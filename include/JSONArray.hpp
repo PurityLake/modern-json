@@ -7,6 +7,8 @@
 
 #include "JSONValue.hpp"
 
+namespace json {
+
 class _JSONArray : public _JSONValue, public std::enable_shared_from_this<_JSONArray> {
 private:
     std::vector<std::shared_ptr<_JSONValue>> value;
@@ -54,5 +56,7 @@ using JSONArray = std::shared_ptr<_JSONArray>;
 static inline JSONArray json_array() {
     return std::make_shared<_JSONArray>();
 }
+
+} // namepsace json
 
 #endif /* __HPP_JSONARRAY__ */

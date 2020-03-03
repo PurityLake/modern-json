@@ -4,6 +4,7 @@
 #include "ModernJSON.hpp"
 
 using namespace std;
+using namespace json;
 
 int main(int argc, char **argv) {
     JSONValue arr = json_array();

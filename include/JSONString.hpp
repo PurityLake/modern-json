@@ -6,6 +6,8 @@
 
 #include "JSONValue.hpp"
 
+namespace json {
+
 class JSONString : public _JSONValue {
 private:
     std::string value;
@@ -25,5 +27,7 @@ public:
         return "string";
     }
 };
+
+}
 
 #endif /* __HPP_JSONSTRING__ */
