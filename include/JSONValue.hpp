@@ -16,4 +16,8 @@ public:
 
 using JSONValue = std::shared_ptr<_JSONValue>;
 
+inline JSONValue operator+(JSONValue& a, JSONValue& b) {
+    return *a + b;
+}
+
 #endif /* __HPP_JSONVALUE__ */
